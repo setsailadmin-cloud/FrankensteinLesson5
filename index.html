@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankenstein Chapters 7-9: Guilt, Justice, & The Sublime</title>
+    <!-- Google Fonts: Cinzel (Gothic Serif) & Inter (Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Gothic Animation Styles */
+        @keyframes alpineFlash {
+            0%, 100% { background-color: transparent; }
+            10%, 25% { background-color: rgba(224, 242, 254, 0.9); filter: brightness(1.5); }
+            15% { background-color: rgba(8, 47, 73, 0.4); }
+            30% { background-color: rgba(186, 230, 253, 0.4); }
+        }
+        @keyframes mountainShake {
+            0%, 100% { transform: translate(0, 0); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 1px); }
+            20%, 40%, 60%, 80% { transform: translate(3px, -1px); }
+        }
+        .lightning-flash {
+            animation: alpineFlash 0.7s ease-out;
+        }
+        .shake-active {
+            animation: mountainShake 0.4s ease-in-out;
+        }
+        .glow-gothic-blue {
+            box-shadow: 0 0 20px -3px rgba(56, 189, 248, 0.15), 0 0 8px -2px rgba(56, 189, 248, 0.05);
+        }
+        .glow-gothic-blue-hover:hover {
+            box-shadow: 0 0 25px -3px rgba(56, 189, 248, 0.35), 0 0 12px -2px rgba(56, 189, 248, 0.15);
+        }
+        /* Custom scrollbar matching dark gothic theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body id="gothic-body" class="bg-[#030712] text-slate-100 font-sans min-h-screen selection:bg-sky-500 selection:text-slate-950 overflow-x-hidden">
+
+    <!-- Flash Screen Overlay -->
+    <div id="ambient-overlay" class="pointer-events-none fixed inset-0 z-50 transition-colors duration-100"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-sky-400 font-bold text-lg tracking-widest font-serif">FRANKENSTEIN</span>
+                    <span class="text-slate-750 font-serif">|</span>
+                    <span class="text-slate-400 text-xs tracking-wider uppercase font-sans font-semibold">Chapters 7-9</span>
+                </div>
+                <!-- Navigation Sections -->
+                <div class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-wider text-slate-400 font-medium">
+                    <a href="#epistolary" class="hover:text-sky-400 transition-colors">Ch 7: Letters</a>
+                    <a href="#trial" class="hover:text-sky-400 transition-colors">Ch 8: Justine's Trial</a>
+                    <a href="#sublime" class="hover:text-sky-400 transition-colors">Ch 9: The Alps</a>
+                    <a href="#quiz" class="hover:text-sky-400 transition-colors">Mastery Quiz</a>
+                    <a href="#seminar" class="hover:text-sky-400 transition-colors">Socratic Prep</a>
+                </div>
+                <div>
+                    <button onclick="triggerAlpineStorm()" class="flex items-center space-x-2 bg-sky-950/40 hover:bg-sky-900/60 border border-sky-500/30 hover:border-sky-400 text-sky-400 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 transform active:scale-95">
+                        <span>⚡ Alpine Echo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="relative py-24 border-b border-slate-900 bg-gradient-to-b from-[#030712] via-[#09152e] to-[#030712]">
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none"></div>
+        
+        <div class="relative max-w-4xl mx-auto text-center px-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-sky-400 bg-sky-950/40 px-3.5 py-1 border border-sky-500/20 rounded-full inline-block mb-6">
+                Post-Reading Study Companion
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-serif font-black tracking-tight text-slate-100" id="main-title">
+                GUILT, JUSTICE & THE SUBLIME
+            </h1>
+            <p class="text-md sm:text-xl font-serif text-slate-400 italic mt-3">
+                Tragedy in Geneva, The Trial of Justine, and the Heights of Chamonix
+            </p>
+            <p class="max-w-2xl mx-auto text-slate-400 leading-relaxed text-sm sm:text-base mt-6">
+                William is murdered. Justine stands falsely accused. As Victor returns to Geneva, he is confronted by the catastrophic consequences of his creation. Revisit the tragedy of the trial, evaluate the limits of human law, and trace Victor's spiritual escape into the sublime Alpine wilderness.
+            </p>
+
+            <div class="mt-8 p-4 max-w-xl mx-auto border-l-2 border-sky-500/30 bg-sky-950/5 text-left rounded-r-xl">
+                <p class="italic text-slate-300 font-serif text-xs sm:text-sm">
+                    "I had turned loose into the world a depraved wretch, whose delight was in carnage and misery; had he not murdered my brother?"
+                </p>
+                <cite class="block text-[10px] text-sky-400 uppercase tracking-wider font-sans mt-2 not-italic">— Victor Frankenstein, Chapter VII</cite>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- SECTION 1: Chapter 7 - The Epistolary Network -->
+        <section id="epistolary" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="p-3 bg-sky-950/50 rounded-xl border border-sky-500/20 text-sky-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold text-slate-100">The Epistolary Network</h2>
+                        <span class="text-sky-400 text-xs tracking-wider uppercase font-semibold">Narrative Machinery in Frankenstein</span>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    In Chapter 7, Mary Shelley uses **letters** as structural engines. Because the novel is limited to Victor's first-person perspective, letters are the essential vehicles by which the narrator relates historical developments and tragedies he did not witness directly.
+                </p>
+                <div class="p-4 bg-slate-900/30 border border-slate-900 rounded-xl space-y-2">
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Key Chapter VII Discoveries:</span>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-sky-400">✦</span>
+                            <span><strong>Alphonse's Dispatch:</strong> Forces Victor to return to Geneva by conveying the sudden, shocking strangulation of young William.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-sky-400">✦</span>
+                            <span><strong>Elizabeth's Secret Pain:</strong> Elizabeth blames herself for the murder because she allowed William to wear their mother's valuable miniature necklace.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Letter Workbench -->
+            <div class="lg:col-span-7 bg-[#070e1b]/60 border border-slate-900 rounded-2xl p-6 sm:p-8 glow-gothic-blue flex flex-col justify-between">
+                <div class="text-center mb-6">
+                    <h3 class="font-serif font-bold text-lg text-slate-200">The Dispatch Cabinet</h3>
+                    <p class="text-slate-400 text-[11px]">Select a document to analyze its literary function and dramatic weight.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button onclick="examineDocument('alphonse')" id="doc-btn-alphonse" class="doc-tab px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-serif hover:border-sky-500/30 text-slate-300 transition-all">
+                        Alphonse's Tragic Letter
+                    </button>
+                    <button onclick="examineDocument('elizabeth')" id="doc-btn-elizabeth" class="doc-tab px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-serif hover:border-sky-500/30 text-slate-300 transition-all">
+                        Elizabeth's Self-Accusation
+                    </button>
+                </div>
+
+                <!-- Document Showcase Screen -->
+                <div class="p-5 bg-slate-950 rounded-xl border border-slate-850 min-h-[180px] flex flex-col justify-center">
+                    <div id="doc-display-default" class="text-center space-y-2">
+                        <span class="text-3xl">✉️</span>
+                        <p class="text-xs text-slate-500">Click a letter above to examine its text, plot purpose, and narrative mechanics.</p>
+                    </div>
+                    <div id="doc-display-active" class="hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span id="doc-sender" class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">SENDER</span>
+                            <span id="doc-purpose" class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">PLOTTING MECHANIC</span>
+                        </div>
+                        <p id="doc-quote" class="italic text-slate-300 text-xs sm:text-sm border-l-2 border-sky-500/40 pl-4"></p>
+                        <p id="doc-analysis" class="text-xs text-slate-400 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Chapter 8 - The Hall of Judgment (The Trial of Justine) -->
+        <section id="trial" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sky-400 text-xs font-semibold tracking-wider uppercase">Chapter VIII Insight</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-100 mt-2">The Hall of Judgment</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    Justine Moritz stands trial for her life. As Victor watches in silent horror, Shelley critiques the limits of human justice and the heavy cost of social prejudice.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Moral Dilemma Simulator -->
+                <div class="lg:col-span-7 bg-[#070e1b]/30 border border-slate-900 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block border-b border-slate-900 pb-3">The Creator's Silence Simulator</span>
+                        <h3 class="text-lg font-serif font-bold text-slate-200">Why does Victor refuse to speak on Justine's behalf?</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                            Victor describes himself as suffering "three-fold agony" during the trial, yet he remains completely silent. Click on each of his internal rationalizations to analyze the flaw in his thinking.
+                        </p>
+                        
+                        <div class="space-y-2 pt-2">
+                            <button onclick="showDilemma('madness')" class="dilemma-btn w-full text-left p-3.5 bg-slate-950 border border-slate-850 hover:border-sky-500/30 rounded-xl text-xs text-slate-300 font-medium transition-all">
+                                ⚖️ Option A: The Fear of Being Deemed Mad
+                            </button>
+                            <button onclick="showDilemma('absence')" class="dilemma-btn w-full text-left p-3.5 bg-slate-950 border border-slate-850 hover:border-sky-500/30 rounded-xl text-xs text-slate-300 font-medium transition-all">
+                                ⚖️ Option B: Alibi & Physical Absence
+                            </button>
+                            <button onclick="showDilemma('cowardice')" class="dilemma-btn w-full text-left p-3.5 bg-slate-950 border border-slate-850 hover:border-sky-500/30 rounded-xl text-xs text-slate-300 font-medium transition-all">
+                                ⚖️ Option C: The Terror of the Monster
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Output Panel -->
+                <div class="lg:col-span-5 bg-slate-900/30 border border-slate-900 rounded-2xl p-6 sm:p-8 flex flex-col justify-center min-h-[280px]" id="dilemma-details-box">
+                    <div id="dilemma-default" class="text-center space-y-3">
+                        <span class="text-2xl text-sky-500">⚖️</span>
+                        <h4 class="font-serif text-sm font-semibold text-slate-200">Moral Evaluation Console</h4>
+                        <p class="text-xs text-slate-500">Select one of Victor's options to dissect his psychological defense mechanisms and the tragic results of his silence.</p>
+                    </div>
+                    <div id="dilemma-active" class="hidden space-y-4 animate-fadeIn">
+                        <div class="inline-block px-2 py-0.5 bg-sky-950 text-sky-400 border border-sky-500/20 rounded text-[10px] font-bold uppercase tracking-wider" id="dilemma-tag">
+                            RATIONALIZATION
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-slate-100" id="dilemma-title">Title</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" id="dilemma-desc"></p>
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-900 text-[11px] text-rose-400" id="dilemma-consequence"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Chapter 9 - The Sublime Alpine Navigator -->
+        <section id="sublime" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sky-400 text-xs font-semibold tracking-wider uppercase">Chapter IX Landscape Study</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-100 mt-2">The Sublime Heights of Chamonix</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    Overwhelmed by remorse and Justine's tragic death, Victor escapes to the high Alps. In Romantic philosophy, majestic, untamed nature possesses a divine healing power. Click the coordinates below to explore his journey.
+                </p>
+            </div>
+
+            <!-- Landscape Interactive Map -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#070e1b]/40 border border-slate-900 rounded-3xl p-6 sm:p-10 glow-gothic-blue">
+                
+                <!-- Graphic Simulated Coordinate Map -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center space-y-4">
+                    <div class="relative w-full max-w-md aspect-[4/3] bg-slate-950 rounded-2xl border-2 border-slate-800 overflow-hidden group">
+                        <!-- Abstract Mountain Wireframe via inline SVG -->
+                        <svg class="absolute inset-0 w-full h-full opacity-40 text-sky-500/30" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M50,280 L180,100 L250,190 L350,80 L390,280" />
+                            <path d="M10,280 L120,150 L190,220 L300,120 L380,280" stroke-dasharray="2 4" />
+                            <circle cx="180" cy="100" r="4" fill="currentColor" class="animate-ping" />
+                        </svg>
+
+                        <!-- Plot Point buttons on map -->
+                        <button onclick="navigateAlpine('valley')" class="absolute left-[20%] top-[70%] transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-900/90 border-2 border-sky-400 text-xs flex items-center justify-center font-bold text-sky-400 hover:scale-110 hover:bg-sky-500 hover:text-slate-950 transition-all">1</button>
+                        <button onclick="navigateAlpine('montblanc')" class="absolute left-[45%] top-[35%] transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-900/90 border-2 border-sky-400 text-xs flex items-center justify-center font-bold text-sky-400 hover:scale-110 hover:bg-sky-500 hover:text-slate-950 transition-all">2</button>
+                        <button onclick="navigateAlpine('montanvert')" class="absolute left-[85%] top-[28%] transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-slate-900/90 border-2 border-sky-400 text-xs flex items-center justify-center font-bold text-sky-400 hover:scale-110 hover:bg-sky-500 hover:text-slate-950 transition-all">3</button>
+
+                        <div class="absolute bottom-3 left-3 bg-slate-900/95 px-2.5 py-1 rounded text-[10px] font-bold text-slate-500 tracking-wider border border-slate-800 uppercase">
+                            Chamonix Valley Topo-Map
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-slate-500 italic">Click the marked landmarks (1-3) to explore Victor's escape</span>
+                </div>
+
+                <!-- Explanation Area -->
+                <div class="lg:col-span-6 space-y-6 lg:border-l lg:border-slate-800 lg:pl-10 min-h-[250px] flex flex-col justify-center">
+                    <div id="alpine-display-content">
+                        <!-- Content dynamically loaded via JS -->
+                        <div class="animate-fadeIn">
+                            <div class="inline-block px-2 py-0.5 bg-sky-950 text-sky-400 border border-sky-500/20 rounded text-[10px] font-bold uppercase tracking-widest mb-3">
+                                Landmark 1 — The Valley Approach
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-slate-100 mb-2">The Arve Valley</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                                On his sorrowful journey, the towering mountains and rushing waters of the Arve valley initially soothe Victor. This emotional recovery directly highlights the **Romantic philosophy** of nature's power to heal the human spirit.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 border-t border-slate-800 pt-4 text-xs">
+                                <div>
+                                    <span class="text-slate-500 block uppercase font-bold tracking-wider">Sublime Element</span>
+                                    <span class="text-slate-300 font-medium">Spiritual Elevation</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block uppercase font-bold tracking-wider">Significance</span>
+                                    <span class="text-slate-300 font-medium">Fleeting relief from despair</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: Chapters 7-9 Comprehensive Quiz -->
+        <section id="quiz" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sky-400 text-xs font-semibold tracking-wider uppercase font-sans">Reading Verification</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-100 mt-2">Chapters 7–9 Mastery Quiz</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    Evaluate your retention of the essential plot details and literary connections from your reading worksheets.
+                </p>
+            </div>
+
+            <!-- Quiz Panel -->
+            <div class="max-w-2xl mx-auto bg-slate-900/30 border border-slate-900 rounded-2xl p-6 sm:p-10 glow-gothic-blue" id="quiz-card">
+                <!-- Slide Tracker -->
+                <div class="flex items-center justify-between text-xs text-slate-500 mb-6 pb-4 border-b border-slate-850">
+                    <span class="uppercase tracking-widest font-semibold" id="quiz-category">COMPREHENSION CHECK</span>
+                    <span id="quiz-question-index">Question 1 of 5</span>
+                </div>
+
+                <!-- Current Question Container -->
+                <div id="quiz-quiz-content" class="space-y-6">
+                    <h3 id="quiz-active-question" class="text-lg sm:text-xl font-serif font-semibold text-slate-200">
+                        Loading first question...
+                    </h3>
+                    
+                    <div id="quiz-answers-stack" class="flex flex-col space-y-3">
+                        <!-- Options loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Review and Explanation Panel -->
+                <div id="quiz-explanation-area" class="hidden mt-6 p-4 bg-slate-950 rounded-xl border border-sky-500/20 animate-fadeIn">
+                    <p id="quiz-outcome-title" class="text-xs font-bold uppercase tracking-wider text-sky-400 mb-1">Correct</p>
+                    <p id="quiz-outcome-text" class="text-xs sm:text-sm text-slate-400 leading-relaxed">Explanation goes here.</p>
+                    <button onclick="advanceQuiz()" class="mt-4 px-4 py-2 bg-sky-950/50 hover:bg-sky-900/50 border border-sky-500/30 text-sky-400 rounded text-xs tracking-wider uppercase font-semibold transition-colors">
+                        Next Question →
+                    </button>
+                </div>
+
+                <!-- Quiz Complete Panel -->
+                <div id="quiz-completion-board" class="hidden text-center space-y-6 py-6 animate-fadeIn">
+                    <div class="text-5xl">🏛️</div>
+                    <h3 class="text-2xl font-serif font-bold text-slate-100">Chapters 7–9 Mastery Attained!</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+                        You have finished the comprehension check. Review your final performance below.
+                    </p>
+                    <div class="bg-slate-950 inline-block px-6 py-3 rounded-xl border border-slate-850">
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest block font-bold">Your Score</span>
+                        <span id="quiz-final-score" class="text-2xl font-serif font-black text-sky-400">0 / 5</span>
+                    </div>
+                    <div>
+                        <button onclick="rebootQuiz()" class="px-5 py-2.5 bg-sky-950/40 hover:bg-sky-900/60 border border-sky-500/30 text-sky-400 rounded-lg text-xs font-semibold tracking-wider uppercase transition-colors">
+                            Retake Evaluation
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: Socratic Seminar & Discussion Workspace -->
+        <section id="seminar" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sky-400 text-xs font-semibold tracking-wider uppercase">Discussion Preparator</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-100 mt-2">Seminar Discussion Workspace</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    Prepare your analytical stance for the classroom seminar. Select a core debate prompt below to outline your evidence-backed thesis.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
+                
+                <!-- Prompt Selection Left -->
+                <div class="lg:col-span-4 space-y-3 flex flex-col justify-start">
+                    <button onclick="selectSeminarPrompt(1)" id="prompt-tab-1" class="seminar-tab text-left p-4 rounded-xl border border-slate-900 bg-slate-900/20 hover:border-sky-500/20 transition-all">
+                        <span class="text-[9px] font-bold text-sky-400 uppercase tracking-wider block mb-1">Theme A: Trial & Justice</span>
+                        <span class="text-xs sm:text-sm text-slate-200 font-serif font-bold leading-snug block">The Blindness of Human Justice</span>
+                    </button>
+                    <button onclick="selectSeminarPrompt(2)" id="prompt-tab-2" class="seminar-tab text-left p-4 rounded-xl border border-slate-900 bg-slate-900/20 hover:border-sky-500/20 transition-all">
+                        <span class="text-[9px] font-bold text-sky-400 uppercase tracking-wider block mb-1">Theme B: Accountability</span>
+                        <span class="text-xs sm:text-sm text-slate-200 font-serif font-bold leading-snug block">The Weight of Silent Complicity</span>
+                    </button>
+                    <button onclick="selectSeminarPrompt(3)" id="prompt-tab-3" class="seminar-tab text-left p-4 rounded-xl border border-slate-900 bg-slate-900/20 hover:border-sky-500/20 transition-all">
+                        <span class="text-[9px] font-bold text-sky-400 uppercase tracking-wider block mb-1">Theme C: Romantic Sublime</span>
+                        <span class="text-xs sm:text-sm text-slate-200 font-serif font-bold leading-snug block">Nature as a Moral Healing Mirror</span>
+                    </button>
+                </div>
+
+                <!-- Drafting Pane Right -->
+                <div class="lg:col-span-8 bg-slate-900/30 border border-slate-900 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-850 pb-3 mb-4">
+                            <span id="seminar-active-badge" class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">Active Focus: The Blindness of Human Justice</span>
+                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold font-sans">Workspace</span>
+                        </div>
+                        <h4 id="seminar-active-title" class="text-lg sm:text-xl font-serif font-bold text-slate-200 mb-2">
+                            How does Elizabeth's passionate testimony in Chapter 8 inadvertently seal Justine's tragic fate?
+                        </h4>
+                        <p id="seminar-active-desc" class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Examine how the courtroom spectators reframe Elizabeth's benevolence. Discuss how societal prejudice and mob logic twist acts of pure love into tools of deeper condemnation.
+                        </p>
+
+                        <!-- Thesis Drafting Area -->
+                        <div class="space-y-2">
+                            <label class="block text-xs uppercase tracking-widest text-slate-500 font-bold">Draft Your Seminar Thesis:</label>
+                            <textarea id="thesis-input" placeholder="Type your thesis statement here..." class="w-full h-24 bg-slate-950 border border-slate-850 rounded-xl p-3 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-sky-500/60 placeholder-slate-600 transition-colors"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Help Dropdowns -->
+                    <div class="space-y-3 pt-4 border-t border-slate-850">
+                        <div class="bg-slate-950/85 rounded-xl border border-slate-900 overflow-hidden">
+                            <button onclick="toggleSeminarDropdown('seminar-evidence')" class="w-full text-left p-3 flex justify-between items-center text-xs font-semibold text-slate-300 hover:text-sky-400 transition-colors">
+                                <span>📌 Suggested Textual Evidence to Cite</span>
+                                <span id="seminar-evidence-icon" class="text-[10px] transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="seminar-evidence" class="hidden p-3 border-t border-slate-900 text-xs text-slate-400 space-y-2">
+                                <p id="seminar-evidence-content">"When she uttered these words, a simple murmur of approval went through the crowd... but it was quickly twisted into hatred." (Chapter VIII) — Highlights how the court turned the family's kindness into an accusation of monstrous betrayal.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950/85 rounded-xl border border-slate-900 overflow-hidden">
+                            <button onclick="toggleSeminarDropdown('seminar-framework')" class="w-full text-left p-3 flex justify-between items-center text-xs font-semibold text-slate-300 hover:text-sky-400 transition-colors">
+                                <span>🛠️ Argumentation Framework Template</span>
+                                <span id="seminar-framework-icon" class="text-[10px] transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="seminar-framework" class="hidden p-3 border-t border-slate-900 text-xs text-slate-400 space-y-2">
+                                <p id="seminar-framework-content"><strong>Thesis Formula:</strong> Elizabeth's defense of Justine backfires because the court operates on emotional bias rather than rational justice, proving that institutional prejudice twists innocent testimony to confirm pre-existing verdicts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-16 text-center">
+        <div class="max-w-2xl mx-auto px-4 space-y-6">
+            <span class="text-4xl text-sky-500/60 block">⚡</span>
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-100">Ready for Chapter X</h2>
+            <p class="text-slate-400 text-sm leading-relaxed max-w-md mx-auto">
+                Having examined the tragedy of Justine's trial and the limits of institutional justice, you are prepared to join class discussions on Victor's moral isolation.
+            </p>
+            <div class="pt-6 text-xs text-slate-500 border-t border-slate-900">
+                <p>Frankenstein Chapters 7–9 Post-Reading Study Companion</p>
+                <p class="mt-1 text-slate-600">Designed for advanced literature classrooms.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Chapter VII Letter Analyses
+        const docsData = {
+            alphonse: {
+                sender: "Alphonse Frankenstein",
+                purpose: "Plotting Catalyst & Narrative vehicle",
+                quote: "William is dead! That sweet child, whose smiles delighted and warmed my heart, is murdered! ... He was found stretched on the grass, pale and cold; the print of the murderer's finger was on his neck.",
+                analysis: "This letter serves as the structural vehicle to bring Victor back to Geneva. Because Victor is isolated in Germany, Alphonse's correspondence relates crucial actions outside Victor's sight. His gruesome description of William's neck bruise immediately signals to Victor that the Creature is responsible."
+            },
+            elizabeth: {
+                sender: "Elizabeth Lavenza",
+                purpose: "Internal guilt catalyst",
+                quote: "My dear cousin, you must return; you alone can console us. I am the cause of this tragedy; I let William wear my mother's valuable miniature portrait, and it has been stolen. My careless vanity has cost him his life!",
+                analysis: "Elizabeth's letter introduces the missing miniature portrait containing a picture of Victor's mother (Caroline Beaufort) kneeling at her father's coffin. This necklace becomes the key physical piece of evidence planted on Justine, showing how innocent, domestic actions are weaponized by the Creature."
+            }
+        };
+
+        function examineDocument(docKey) {
+            // Highlight Selected Button
+            const buttons = document.getElementsByClassName('doc-tab');
+            for (let b of buttons) {
+                b.className = "doc-tab px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-serif hover:border-sky-500/30 text-slate-300 transition-all";
+            }
+            document.getElementById('doc-btn-' + docKey).className = "doc-tab px-4 py-3 bg-sky-950/40 border border-sky-500/50 rounded-xl text-center text-xs font-serif text-sky-400 font-bold transition-all";
+
+            const data = docsData[docKey];
+            document.getElementById('doc-display-default').classList.add('hidden');
+            const activePanel = document.getElementById('doc-display-active');
+            activePanel.classList.remove('hidden');
+
+            document.getElementById('doc-sender').innerText = `SENDER: ${data.sender}`;
+            document.getElementById('doc-purpose').innerText = `PURPOSE: ${data.purpose}`;
+            document.getElementById('doc-quote').innerText = `"${data.quote}"`;
+            document.getElementById('doc-analysis').innerHTML = `<strong>Narrative Purpose:</strong> ${data.analysis}`;
+        }
+
+        // Chapter VIII Creator's Silence Options
+        const dilemmas = {
+            madness: {
+                tag: "FEAR OF MADNESS",
+                title: "The Terror of Being Deemed Insane",
+                desc: "Victor rationalizes his silence by asserting that any explanation of a gigantic monster brought to life through scientific corpses would be mocked as delusional madness. He values his own academic reputation and social standing over the risk of defending Justine.",
+                consequence: "Consequence: By protecting himself from ridicule, he leaves Justine completely defenseless against institutional corruption."
+            },
+            absence: {
+                tag: "ALIBI & DISTANCE",
+                title: "Physical Absence & Lack of Witness",
+                desc: "Victor excuses his silence by noting he was out of the country (in Germany) during the time of William's murder. Since he has no physical witness, he believes his accusations would carry no legal weight in a court governed by circumstantial logic.",
+                consequence: "Consequence: This creates a moral cop-out; he ignores the reality that his creation is the actual instrument of death."
+            },
+            cowardice: {
+                tag: "COWARDICE & GUILT",
+                title: "The Paralyzing Terror of His Creation",
+                desc: "Beneath his scientific rationalizations lies absolute terror of the Creature. Victor is paralyzed by guilt and cowardice; exposing the Creature means admitting his grotesque defiance of nature's boundaries and his complete parental failure.",
+                consequence: "Consequence: His fear causes him to stand idly by, making him complicit in Justine's legal execution."
+            }
+        };
+
+        function showDilemma(key) {
+            // Highlight active button
+            const buttons = document.getElementsByClassName('dilemma-btn');
+            for (let b of buttons) {
+                b.className = "dilemma-btn w-full text-left p-3.5 bg-slate-950 border border-slate-850 hover:border-sky-500/30 rounded-xl text-xs text-slate-300 font-medium transition-all";
+            }
+            event.currentTarget.className = "dilemma-btn w-full text-left p-3.5 bg-sky-950/40 border border-sky-500/50 rounded-xl text-xs text-sky-400 font-bold transition-all";
+
+            const data = dilemmas[key];
+            document.getElementById('dilemma-default').classList.add('hidden');
+            const activePanel = document.getElementById('dilemma-active');
+            activePanel.classList.remove('hidden');
+
+            document.getElementById('dilemma-tag').innerText = data.tag;
+            document.getElementById('dilemma-title').innerText = data.title;
+            document.getElementById('dilemma-desc').innerText = data.desc;
+            document.getElementById('dilemma-consequence').innerText = data.consequence;
+        }
+
+        // Chapter IX Landscape Elements
+        const alpineLandmarks = {
+            valley: {
+                badge: "Landmark 1 — The Valley Approach",
+                title: "The Healing Power of Nature",
+                desc: "As Victor approaches Geneva, the familiar, ancient mountains and pristine lakes of his homeland briefly lift his heavy spirit. This encapsulates a cornerstone of Romanticism: the belief that the natural world possesses an inherent, spiritual healing power capable of restoring the human soul.",
+                sublime: "Spiritual Elevation",
+                significance: "Fleeting relief from despair"
+            },
+            montblanc: {
+                badge: "Landmark 2 — The Sublime Peak",
+                title: "The Shadow of Mont Blanc",
+                desc: "Mont Blanc towers in absolute, dangerous, and icy beauty. For Romantics like Percy and Mary Shelley, the sheer scale of the peak represents the Sublime—a mixture of awe and terror that makes human ambition and suffering feel insignificant.",
+                sublime: "The Grand Aesthetic Sublime",
+                significance: "Highlights Victor's deep insignificance"
+            },
+            montanvert: {
+                badge: "Landmark 3 — The Sea of Ice",
+                title: "The Glaciers of Montanvert",
+                desc: "Despite cold, dark, and pouring rain, Victor climbs the steep slopes of Montanvert to experience the desolate beauty of the Sea of Ice (Mer de Glace). This dark, stormy alpine setting exemplifies the Gothic-Romantic atmosphere, setting the perfect stage for his confrontational encounter with the Creature.",
+                sublime: "Sublime Solitude & Storms",
+                significance: "A dramatic space for cosmic accountability"
+            }
+        };
+
+        function navigateAlpine(key) {
+            const data = alpineLandmarks[key];
+            const container = document.getElementById('alpine-display-content');
+
+            container.innerHTML = `
+                <div class="animate-fadeIn">
+                    <div class="inline-block px-2 py-0.5 bg-sky-950 text-sky-400 border border-sky-500/20 rounded text-[10px] font-bold uppercase tracking-widest mb-3">
+                        ${data.badge}
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-slate-100 mb-2">${data.title}</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">${data.desc}</p>
+                    <div class="grid grid-cols-2 gap-4 border-t border-slate-800 pt-4 text-xs">
+                        <div>
+                            <span class="text-slate-500 block uppercase font-bold tracking-wider">Sublime Element</span>
+                            <span class="text-slate-300 font-medium">${data.sublime}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block uppercase font-bold tracking-wider">Significance</span>
+                            <span class="text-slate-300 font-medium">${data.significance}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            triggerAlpineStorm();
+        }
+
+        // Web Audio Synthesizer: Alpine Storm & Low Echo Rumble
+        function triggerAlpineStorm() {
+            const overlay = document.getElementById('ambient-overlay');
+            const title = document.getElementById('main-title');
+
+            overlay.classList.remove('lightning-flash');
+            title.classList.remove('shake-active');
+            void overlay.offsetWidth; // Reflow reset
+            void title.offsetWidth;
+
+            overlay.classList.add('lightning-flash');
+            title.classList.add('shake-active');
+
+            // Sound Synthesis
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+
+            // Low rumble buffer
+            const bufferSize = ctx.sampleRate * 2.5;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(110, ctx.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(10, ctx.currentTime + 2.2);
+
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.01, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.8, ctx.currentTime + 0.05); // Lightning Crack
+            gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.4); // Deep rumble
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2.5); // Echo decay
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+
+            noise.start();
+        }
+
+        // Quiz Database mapped directly to the uploaded teacher resources
+        const quizList = [
+            {
+                question: "What briefly lifts Victor's spirit on his sorrowful journey home to Geneva in Chapter 7?",
+                answers: [
+                    { text: "A series of reassuring academic letters from Professor Krempe.", correct: false },
+                    { text: "Seeing the majestic mountains and pristine lakes of his native land.", correct: true },
+                    { text: "The warm companionship of several local travelers.", correct: false },
+                    { text: "The promise of a swift police investigation in Geneva.", correct: false }
+                ],
+                explanation: "Correct! On his way home, seeing the mountains and lakes of Geneva brings him brief relief. In Romantic philosophy, this represents the natural world's power to heal the human spirit."
+            },
+            {
+                question: "Why does Elizabeth passionately believe she is responsible for William's tragic death?",
+                answers: [
+                    { text: "She left William unsupervised outside during a sudden alpine storm.", correct: false },
+                    { text: "She let William wear their mother's valuable necklace, which was stolen.", correct: true },
+                    { text: "She forgot to lock the family gates on the night of the murder.", correct: false },
+                    { text: "She argued with him shortly before he disappeared into the woods.", correct: false }
+                ],
+                explanation: "Correct! Elizabeth is filled with guilt because she allowed William to wear their mother's valuable miniature necklace, which was stolen from his body during the crime."
+            },
+            {
+                question: "Why does Elizabeth's passionate testimony on Justine's behalf ironically harm her case?",
+                answers: [
+                    { text: "The judges believe Elizabeth was co-conspiring in the crime.", correct: false },
+                    { text: "The public views Justine's alleged theft as an even worse betrayal of Elizabeth's generosity.", correct: true },
+                    { text: "Her testimony is dismissed because she is a woman.", correct: false },
+                    { text: "Elizabeth accidentally slips and reveals damaging information.", correct: false }
+                ],
+                explanation: "Correct! The court spectators twist Elizabeth's kindness, viewing Justine as an ungrateful monster who betrayed a generous, loving family. This increases their hatred of her."
+            },
+            {
+                question: "What portrait is depicted in the miniature hanging above the Frankensteins' mantelpiece?",
+                answers: [
+                    { text: "Victor's mother, Caroline Beaufort, kneeling at her father's coffin.", correct: true },
+                    { text: "William and Elizabeth playing in the family gardens.", correct: false },
+                    { text: "An ancient, dark landscape of the Swiss Alps.", correct: false },
+                    { text: "A formal portrait of Alphonse during his early political career.", correct: false }
+                ],
+                explanation: "Correct! The picture depicts Caroline Beaufort kneeling in grief at her father's coffin, a highly gothic detail symbolizing mourning and early loss."
+            },
+            {
+                question: "What prevents Victor from committing suicide at the beginning of Chapter 9?",
+                answers: [
+                    { text: "His deep respect for his religious upbringing.", correct: false },
+                    { text: "His obligation to protect his father and Elizabeth from the monster's wrath.", correct: true },
+                    { text: "Henry Clerval's physical presence and watchful guidance.", correct: false },
+                    { text: "The sudden arrival of Swiss judicial officials.", correct: false }
+                ],
+                explanation: "Correct! Victor reveals that his obligation to watch over the Creature to protect his father and Elizabeth keeps him alive, even in his deepest moments of despair."
+            }
+        ];
+
+        let quizIndex = 0;
+        let score = 0;
+
+        function loadQuizQuestion() {
+            document.getElementById('quiz-explanation-area').classList.add('hidden');
+
+            const activeQ = quizList[quizIndex];
+            document.getElementById('quiz-question-index').innerText = `Question ${quizIndex + 1} of ${quizList.length}`;
+            document.getElementById('quiz-active-question').innerText = activeQ.question;
+
+            const answersStack = document.getElementById('quiz-answers-stack');
+            answersStack.innerHTML = '';
+
+            activeQ.answers.forEach((ans, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "quiz-ans-opt w-full text-left p-4 bg-slate-950 border border-slate-850 rounded-xl text-xs sm:text-sm hover:border-sky-500/50 hover:bg-slate-900/30 text-slate-300 transition-all font-sans";
+                btn.innerText = ans.text;
+                btn.onclick = () => selectQuizAnswer(idx, ans.correct);
+                answersStack.appendChild(btn);
+            });
+        }
+
+        function selectQuizAnswer(index, isCorrect) {
+            const activeQ = quizList[quizIndex];
+            if (isCorrect) score++;
+
+            // Highlight Correct vs Incorrect
+            const buttons = document.getElementsByClassName('quiz-ans-opt');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                if (activeQ.answers[i].correct) {
+                    buttons[i].className = "quiz-ans-opt w-full text-left p-4 bg-emerald-950/20 border-2 border-emerald-500 text-emerald-300 rounded-xl text-xs sm:text-sm font-sans font-semibold animate-pulse";
+                } else {
+                    buttons[i].className = "quiz-ans-opt w-full text-left p-4 bg-slate-950 border border-slate-900 text-slate-600 rounded-xl text-xs sm:text-sm font-sans";
+                }
+            }
+
+            // Display Feedback Panel
+            const expArea = document.getElementById('quiz-explanation-area');
+            const outcomeTitle = document.getElementById('quiz-outcome-title');
+            const outcomeText = document.getElementById('quiz-outcome-text');
+
+            expArea.classList.remove('hidden');
+            if (isCorrect) {
+                outcomeTitle.innerText = "✦ Correct Answer!";
+                outcomeTitle.className = "text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1";
+            } else {
+                outcomeTitle.innerText = "✦ Incorrect Assumption";
+                outcomeTitle.className = "text-xs font-bold uppercase tracking-wider text-rose-400 mb-1";
+            }
+            outcomeText.innerText = activeQ.explanation;
+        }
+
+        function advanceQuiz() {
+            quizIndex++;
+            if (quizIndex < quizList.length) {
+                loadQuizQuestion();
+            } else {
+                // Show completion
+                document.getElementById('quiz-quiz-content').classList.add('hidden');
+                document.getElementById('quiz-completion-board').classList.remove('hidden');
+                document.getElementById('quiz-final-score').innerText = `${score} / ${quizList.length}`;
+            }
+        }
+
+        function rebootQuiz() {
+            quizIndex = 0;
+            score = 0;
+            document.getElementById('quiz-quiz-content').classList.remove('hidden');
+            document.getElementById('quiz-completion-board').classList.add('hidden');
+            loadQuizQuestion();
+        }
+
+        // Socratic Seminar Prompts Database
+        const seminarPrompts = {
+            1: {
+                badge: "Active Focus: The Blindness of Human Justice",
+                title: "How does Elizabeth's passionate testimony in Chapter 8 inadvertently seal Justine's tragic fate?",
+                desc: "Examine how the courtroom spectators reframe Elizabeth's benevolence. Discuss how societal prejudice and mob logic twist acts of pure love into tools of deeper condemnation.",
+                evidence: '"When she uttered these words, a simple murmur of approval went through the crowd... but it was quickly twisted into hatred." (Chapter VIII) — Highlights how the court turned the family\'s kindness into an accusation of monstrous betrayal.',
+                framework: "Thesis Formula: Elizabeth's defense of Justine backfires because the court operates on emotional bias rather than rational justice, proving that institutional prejudice twists innocent testimony to confirm pre-existing verdicts."
+            },
+            2: {
+                badge: "Active Focus: The Weight of Silent Complicity",
+                title: "To what extent is Victor directly guilty of the murders of William and Justine?",
+                desc: "Weigh Victor's internal guilt. If Victor possesses the knowledge that could save Justine but chooses silence to protect his own sanity and social status, is he as guilty as the Creature itself?",
+                evidence: '"I, not in deed, but in effect, was the true murderer." (Chapter IX) — Victor acknowledges that his silent complicity is what sealed Justine\'s execution.',
+                framework: "Thesis Formula: Although the Creature physically commits the crime, Victor\'s refusal to testify makes him legally and morally responsible for Justine\'s execution, illustrating that silence in the face of injustice is its own form of violence."
+            },
+            3: {
+                badge: "Active Focus: Nature as a Moral Healing Mirror",
+                title: "How does the climb up Montanvert in Chapter 9 define Frankenstein as a masterpiece of Romanticism?",
+                desc: "Analyze how Shelley uses the high, stormy mountains to reflect Victor's psychological isolation. Does the sublime scenery actually soothe his despair, or does it heighten his insignificance?",
+                evidence: '"The winds soothe me, and make me feel spiritual... sublime ecstasy that the mountains inspire." (Chapter IX) — Shows how natural scale provides temporary relief from deep guilt.',
+                framework: "Thesis Formula: Mary Shelley uses the alpine sublime not merely as background setting, but as a moral mirror; the vast, cold majesty of the glaciers provides Victor temporary spiritual relief while emphasizing his ultimate insignificance before nature."
+            }
+        };
+
+        function selectSeminarPrompt(promptId) {
+            const tabs = document.getElementsByClassName('seminar-tab');
+            for (let t of tabs) {
+                t.className = "seminar-tab text-left p-4 rounded-xl border border-slate-900 bg-slate-900/20 hover:border-sky-500/20 transition-all";
+            }
+            document.getElementById('prompt-tab-' + promptId).className = "seminar-tab text-left p-4 rounded-xl border border-sky-500/30 bg-sky-950/20 transition-all";
+
+            const data = seminarPrompts[promptId];
+            document.getElementById('seminar-active-badge').innerText = data.badge;
+            document.getElementById('seminar-active-title').innerText = data.title;
+            document.getElementById('seminar-active-desc').innerText = data.desc;
+            document.getElementById('seminar-evidence-content').innerText = data.evidence;
+            document.getElementById('seminar-framework-content').innerHTML = `<strong>Thesis Formula:</strong> ${data.framework}`;
+
+            document.getElementById('thesis-input').value = '';
+        }
+
+        function toggleSeminarDropdown(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                el.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        window.onload = function() {
+            loadQuizQuestion();
+        }
+    </script>
+</body>
+</html>
